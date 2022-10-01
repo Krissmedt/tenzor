@@ -2,6 +2,7 @@ pub mod vektor;
 pub mod matrix;
 pub mod tensor;
 pub mod INumber;
+mod INumber_forInteger;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
