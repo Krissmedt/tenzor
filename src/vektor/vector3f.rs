@@ -10,12 +10,12 @@ use std::ops;
 impl PartialEq<Vector3f> for Vector3f {
     fn eq(&self, other: &Vector3f) -> bool {
         let tolerance = 0.01;
-        let relDeltaX = (self.x - other.x)/self.x;
-        let relDeltaY = (self.y - other.y)/self.y;
-        let relDeltaZ = (self.z - other.z)/self.z;
-        return relDeltaX <= tolerance
-            && relDeltaY <= tolerance
-            && relDeltaZ <= tolerance
+        let rel_delta_x = (self.x - other.x)/self.x;
+        let rel_delta_y = (self.y - other.y)/self.y;
+        let rel_delta_z = (self.z - other.z)/self.z;
+        return rel_delta_x <= tolerance
+            && rel_delta_y <= tolerance
+            && rel_delta_z <= tolerance
     }
 }
 
