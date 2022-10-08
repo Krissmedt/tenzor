@@ -1,7 +1,7 @@
 use crate::IRealNumber::IRealNumber;
 use std::ops;
 
-#[derive(Copy, Clone, Debug, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, PartialEq)]
 pub struct Vector3<T> {
     pub x: T,
     pub y: T,
@@ -21,8 +21,11 @@ impl<T : IRealNumber> ops::Add<Vector3<T>> for Vector3<T> {
 }
 
 impl<T : IRealNumber> Vector3<T> {
-    fn dot(&self, other : &Vector3<T>) -> T {
+    pub fn dot(self, other : Vector3<T>) -> T {
         return self.x*other.x + self.y*other.y + self.z*other.z
     }
 
+    pub fn approx(self, other : Vector3<T>, tolerance : T) -> bool {
+        false
+    }
 }
