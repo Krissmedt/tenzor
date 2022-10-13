@@ -13,6 +13,7 @@ Copy
 + ops::Rem<Self, Output = Self>
 + ops::RemAssign<Self>
 + ops::Neg
++ PartialOrd
 {}
 
 impl IRealNumber for i8 {}

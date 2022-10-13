@@ -1,4 +1,4 @@
-use crate::IRealNumber::IRealNumber;
+use crate::math::IRealNumber::IRealNumber;
 use std::ops;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
@@ -26,6 +26,12 @@ impl<T : IRealNumber> Vector3<T> {
     }
 
     pub fn approx(self, other : Vector3<T>, tolerance : T) -> bool {
-        false
+        let abs_dx = if self.x > other.x {self.x - other.x} else {other.x - self.x};
+        let abs_dy = if self.y > other.y {self.y - other.y} else {other.y - self.y};
+        let abs_dz = if self.z > other.z {self.z - other.z} else {other.z - self.z};
+
+        return abs_dx <= tolerance
+            && abs_dy <= tolerance
+            && abs_dz <= tolerance
     }
 }

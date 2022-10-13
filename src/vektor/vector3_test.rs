@@ -3,6 +3,66 @@ mod vector3f_test {
     use crate::vektor::vector3::Vector3;
 
     #[test]
+    fn approx_shouldReturnTrue_whenVectorsWithinTolerance_forAllPrimitiveNumericTypes() {
+        let operand_a_i8 =    Vector3 {x: 10 as i8,    y: 20 as i8,    z: 30 as i8};
+        let operand_a_i16 =   Vector3 {x: 10 as i16,   y: 20 as i16,   z: 30 as i16};
+        let operand_a_i32 =   Vector3 {x: 10 as i32,   y: 20 as i32,   z: 30 as i32};
+        let operand_a_i64 =   Vector3 {x: 10 as i64,   y: 20 as i64,   z: 30 as i64};
+        let operand_a_i128 =  Vector3 {x: 10 as i128,  y: 20 as i128,  z: 30 as i128};
+        let operand_a_isize = Vector3 {x: 10 as isize, y: 20 as isize, z: 30 as isize};
+        let operand_a_f32 = Vector3   {x: 1.01 as f32, y: 2.02 as f32, z: 3.03 as f32};
+        let operand_a_f64 = Vector3   {x: 1.01 as f64, y: 2.02 as f64, z: 3.03 as f64};
+
+        let operand_b_i8 =    Vector3 {x: 11 as i8,    y: 21 as i8,    z: 31 as i8};
+        let operand_b_i16 =   Vector3 {x: 11 as i16,   y: 21 as i16,   z: 31 as i16};
+        let operand_b_i32 =   Vector3 {x: 11 as i32,   y: 21 as i32,   z: 31 as i32};
+        let operand_b_i64 =   Vector3 {x: 11 as i64,   y: 21 as i64,   z: 31 as i64};
+        let operand_b_i128 =  Vector3 {x: 11 as i128,  y: 21 as i128,  z: 31 as i128};
+        let operand_b_isize = Vector3 {x: 11 as isize, y: 21 as isize, z: 31 as isize};
+        let operand_b_f32 = Vector3   {x: 1.02 as f32, y: 2.03 as f32, z: 3.04 as f32};
+        let operand_b_f64 = Vector3   {x: 1.02 as f64, y: 2.03 as f64, z: 3.04 as f64};
+
+        assert!(operand_a_i8.approx(operand_b_i8, 2));
+        assert!(operand_a_i16.approx(operand_b_i16, 2));
+        assert!(operand_a_i32.approx(operand_b_i32, 2));
+        assert!(operand_a_i64.approx(operand_b_i64, 2));
+        assert!(operand_a_i128.approx(operand_b_i128, 2));
+        assert!(operand_a_isize.approx(operand_b_isize, 2));
+        assert!(operand_a_f32.approx(operand_b_f32, 0.1));
+        assert!(operand_a_f64.approx(operand_b_f64, 0.1));
+    }
+
+    #[test]
+    fn approx_shouldReturnFalse_whenVectorsNotWithinTolerance_forAllPrimitiveNumericTypes() {
+        let operand_a_i8 =    Vector3 {x: 10 as i8,    y: 20 as i8,    z: 30 as i8};
+        let operand_a_i16 =   Vector3 {x: 10 as i16,   y: 20 as i16,   z: 30 as i16};
+        let operand_a_i32 =   Vector3 {x: 10 as i32,   y: 20 as i32,   z: 30 as i32};
+        let operand_a_i64 =   Vector3 {x: 10 as i64,   y: 20 as i64,   z: 30 as i64};
+        let operand_a_i128 =  Vector3 {x: 10 as i128,  y: 20 as i128,  z: 30 as i128};
+        let operand_a_isize = Vector3 {x: 10 as isize, y: 20 as isize, z: 30 as isize};
+        let operand_a_f32 = Vector3   {x: 1.01 as f32, y: 2.02 as f32, z: 3.03 as f32};
+        let operand_a_f64 = Vector3   {x: 1.01 as f64, y: 2.02 as f64, z: 3.03 as f64};
+
+        let operand_b_i8 =    Vector3 {x: 12 as i8,    y: 22 as i8,    z: 32 as i8};
+        let operand_b_i16 =   Vector3 {x: 12 as i16,   y: 22 as i16,   z: 32 as i16};
+        let operand_b_i32 =   Vector3 {x: 12 as i32,   y: 22 as i32,   z: 32 as i32};
+        let operand_b_i64 =   Vector3 {x: 12 as i64,   y: 22 as i64,   z: 32 as i64};
+        let operand_b_i128 =  Vector3 {x: 12 as i128,  y: 22 as i128,  z: 32 as i128};
+        let operand_b_isize = Vector3 {x: 12 as isize, y: 22 as isize, z: 32 as isize};
+        let operand_b_f32 = Vector3   {x: 1.02 as f32, y: 2.03 as f32, z: 3.04 as f32};
+        let operand_b_f64 = Vector3   {x: 1.02 as f64, y: 2.03 as f64, z: 3.04 as f64};
+
+        assert!(!operand_a_i8.approx(operand_b_i8, 1));
+        assert!(!operand_a_i16.approx(operand_b_i16, 1));
+        assert!(!operand_a_i32.approx(operand_b_i32, 1));
+        assert!(!operand_a_i64.approx(operand_b_i64, 1));
+        assert!(!operand_a_i128.approx(operand_b_i128, 1));
+        assert!(!operand_a_isize.approx(operand_b_isize, 1));
+        assert!(!operand_a_f32.approx(operand_b_f32, 0.001));
+        assert!(!operand_a_f64.approx(operand_b_f64, 0.001));
+    }
+
+    #[test]
     fn vectorAddition_shouldReturnCorrectResult_forAllPrimitiveNumericTypes() {
         let operand_i8 = Vector3 {x: 1 as i8, y: 2 as i8, z: 3 as i8};
         let operand_i16 = Vector3 {x: 1 as i16, y: 2 as i16, z: 3 as i16};
@@ -38,8 +98,8 @@ mod vector3f_test {
         assert_eq!(result_i64, expected_i64);
         assert_eq!(result_i128, expected_i128);
         assert_eq!(result_isize, expected_isize);
-        assert_eq!(result_f32, expected_f32);
-        assert_eq!(result_f64, expected_f64);
+        assert!(result_f32.approx(expected_f32, 0.01));
+        assert!(result_f64.approx(expected_f64, 0.01));
     }
 
     #[test]

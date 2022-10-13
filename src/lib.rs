@@ -1,7 +1,7 @@
 pub mod vektor;
 pub mod matrix;
 pub mod tensor;
-pub mod IRealNumber;
+mod math;
 
 pub fn add(left: usize, right: usize) -> usize {
     left + right
