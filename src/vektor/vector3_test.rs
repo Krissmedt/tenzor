@@ -1,5 +1,6 @@
 #[cfg(test)]
-mod vector3f_test {
+mod vector3_test {
+    use crate::math;
     use crate::vektor::vector3::Vector3;
 
     #[test]
@@ -138,7 +139,7 @@ mod vector3f_test {
         assert_eq!(result_i64, expected_i64);
         assert_eq!(result_i128, expected_i128);
         assert_eq!(result_isize, expected_isize);
-        assert_eq!(result_f32, expected_f32);
-        assert_eq!(result_f64, expected_f64);
+        assert!(math::approx(result_f32, expected_f32, 0.001));
+        assert!(math::approx(result_f64, expected_f64, 0.001));
     }
 }
