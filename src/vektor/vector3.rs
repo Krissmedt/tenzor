@@ -1,4 +1,4 @@
-use crate::math::IRealNumber::IRealNumber;
+use crate::math::IRealNumber;
 use std::ops;
 
 #[derive(Copy, Clone, Debug, PartialEq)]
