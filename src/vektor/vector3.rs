@@ -1,3 +1,4 @@
+use std::fmt::{Display, Formatter, write};
 use std::ops;
 use crate::math::IRealNumber;
 
@@ -6,6 +7,12 @@ pub struct Vector3<T> {
     pub x: T,
     pub y: T,
     pub z: T,
+}
+
+impl Display for Vector3<f64> {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        write!(f, "[{}, {}, {}]", self.x, self.y, self.z)
+    }
 }
 
 impl<T: IRealNumber> ops::Add<Vector3<T>> for Vector3<T> {
