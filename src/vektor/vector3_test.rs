@@ -4,7 +4,7 @@ mod vector3_test {
     use crate::math;
     use crate::vektor::vector3::Vector3;
 
-    #[test]
+#[test]
     fn approx_shouldReturnTrue_whenVectorsWithinTolerance_forAllPrimitiveNumericTypes() {
         let operand_a_i8 =    Vector3 {x: 10 as i8,    y: 20 as i8,    z: 30 as i8};
         let operand_a_i16 =   Vector3 {x: 10 as i16,   y: 20 as i16,   z: 30 as i16};
