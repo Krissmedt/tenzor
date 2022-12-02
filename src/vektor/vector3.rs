@@ -9,12 +9,6 @@ pub struct Vector3<T> {
     pub z: T,
 }
 
-impl Display for Vector3<f64> {
-    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f, "[{}, {}, {}]", self.x, self.y, self.z)
-    }
-}
-
 impl<T: IRealNumber> ops::Add<Vector3<T>> for Vector3<T> {
     type Output = Vector3<T>;
 
