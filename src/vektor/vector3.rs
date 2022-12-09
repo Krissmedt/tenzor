@@ -106,6 +106,18 @@ impl<T: IRealNumber> ops::Div<T> for Vector3<T> {
     }
 }
 
+impl<T: IRealNumber> ops::Neg for Vector3<T> {
+    type Output = Vector3<T>;
+
+    fn neg(self) -> Self::Output {
+        return Vector3 {
+            x: -self.x,
+            y: -self.y,
+            z: -self.z,
+        };
+    }
+}
+
 impl<T: IRealNumber> Vector3<T> {
 
     pub fn dot(self, other: Vector3<T>) -> T {
